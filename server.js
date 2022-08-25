@@ -15,7 +15,7 @@ const app = express();
 // middleware to share resources across the internet: The most important job for middleware is to stop the request incase theres an error in the require.  
 app.use(cors());
 let PORT = process.env.PORT || 3005;
-
+app.listen(PORT, () => console.log(`We are up onn PORT: ${PORT}`));
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 // ROUTES 
@@ -51,14 +51,14 @@ app.get('/', (request, response) => {
 app.get('/weather', newWeather);
 
 async function newWeather(request, response) {
+  
   try {
     let showResults = await axios.get(url);
-    let searchQuery = request.query.searchQuery;
     let lat = request.query.lat
     let lon = request.query.lon
     console.log(searchQuery);
 
-    let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.REACT_APP_WEATHER_API_KEY}&units=I&days=16&lat=${lat}&lon=${lon}`
+    let url = `http://api.weatherbit.io/v2.0/forecast/daily?at=${lat}&lon=${lon}&key=${process.env.REACT_APP_WEATHER_API_KEY}&days=16&units=I`
 
     let dataToSend = showResults.data.data.map(object => new Forecast(object));
     response.status(200).send(dataToSend);
@@ -67,7 +67,7 @@ async function newWeather(request, response) {
   }
   catch (error) {
     response.status(500).send('error: Sorry, something went wrong. ');
-  };
+  }
 }
 
 // ---------------------------------------------------Movies--------------------------------------------------------------
@@ -130,5 +130,3 @@ app.use((error, request, response) => {
   response.status(500).send('error: Sorry, something went wrong. ');
 });
 
-
-app.listen(PORT, () => console.log(`We are up onn PORT: ${PORT}`));

@@ -66,7 +66,7 @@ async function newWeather(request, response) {
 
   }
   catch (error) {
-    next(error);
+    response.status(500).send('error: Sorry, something went wrong. ');
   };
 }
 
@@ -89,7 +89,7 @@ async function newMovie(request, response) {
   }
 
   catch (error) {
-    next(error);
+    response.status(500).send('error: Sorry, something went wrong. ');
   };
 }
 // ----------------------- Creating Classes:-------------------------------------------------------------------------
@@ -125,7 +125,8 @@ app.get('*', (request, response) => {
 
 // ERRORS
 // Handle any errors
-app.use((error, request, response, next) => {
+
+app.use((error, request, response) => {
   response.status(500).send('error: Sorry, something went wrong. ');
 });
 

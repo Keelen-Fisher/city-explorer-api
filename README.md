@@ -24,6 +24,8 @@ All on Trello: [https://trello.com/c/t5TuFa6u/9-1-set-up-your-server-repository]
 
 ## Work Flow with WRRC
 
+![wireframe](Image%20of%20WRRC%202%20for%20Lab%2007.png)
+
 Name of feature: Lab 07 Feature
 
 Estimate of time needed to complete: 5-6 hours
@@ -33,3 +35,35 @@ Start time: 4:48 Pm CDT
 Finish time: 12:20 AM CDT
 
 Actual time needed to complete: 6-8 hours
+
+----------------------------------------------------------------------------------------------------------------------
+
+## Work Flow2 with WRRC
+
+![wireframe 2](Image%20of%20WRRC%203%20for%20Lab%2008.png)
+
+Name of feature: Lab 08 Feature
+
+Estimate of time needed to complete: 5-6 hours
+
+Start time: 4:48 Pm CDT
+
+Finish time: CDT
+
+Actual time needed to complete: Not Yet completed
+
+------------------------------------------------------------------------------------------------------------------------------
+
+## Work Flow3 with WRRC
+
+![wireframe 4](WRRC%204%20for%20Lab%2009.png)
+
+Name of feature: Lab 09 Feature
+
+Estimate of time needed to complete: 5-6 hours
+
+Start time: 5:38 Pm CDT
+
+Finish time: CDT
+
+Actual time needed to complete: Not Yet completed

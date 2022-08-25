@@ -7,7 +7,6 @@ console.log('testing testing, is this thing on? or not?');
 //  We use require instead of import 
 const express = require('express');
 require('dotenv').config();
-let data = require('./data/weather.json');
 const cors = require('cors');
 const axios = require('axios');
 // Invoke the library,  so app will become our server.
@@ -53,12 +52,12 @@ app.get('/weather', newWeather);
 async function newWeather(request, response) {
   
   try {
-    let showResults = await axios.get(url);
     let lat = request.query.lat
     let lon = request.query.lon
+    let url = `http://api.weatherbit.io/v2.0/forecast/daily?at=${lat}&lon=${lon}&key=${process.env.REACT_APP_WEATHER_API_KEY}&days=16&units=I`
+    let showResults = await axios.get(url);
     console.log(searchQuery);
 
-    let url = `http://api.weatherbit.io/v2.0/forecast/daily?at=${lat}&lon=${lon}&key=${process.env.REACT_APP_WEATHER_API_KEY}&days=16&units=I`
 
     let dataToSend = showResults.data.data.map(object => new Forecast(object));
     response.status(200).send(dataToSend);

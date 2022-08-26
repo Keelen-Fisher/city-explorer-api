@@ -4,8 +4,7 @@ const axios = require('axios');
 
 async function getMovie(request, response, next) {
   let city = request.query.searchQuery;
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.
-    REACT_APP_MOVIE_API_KEY}&query=${city}`;
+  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=${city}`;
   try {
     let showMovie = await axios.get(url);
     console.log(searchQuery);

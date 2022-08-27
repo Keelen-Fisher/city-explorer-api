@@ -10,6 +10,7 @@ async function getWeather(request, response, next){
     console.log(url);
     let showResults = await axios.get(url);
     console.log(showResults.data);
+    // Whenever you are declaring an await, you must always put in .data in the .map function presented down below and then .<name of the array inside of an object>
     let dataToSend = showResults.data.data.map(object => new Forecast(object));
     response.status(200).send(dataToSend);
   }

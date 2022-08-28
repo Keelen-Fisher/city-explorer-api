@@ -3,16 +3,17 @@
 const axios = require('axios');
 
 async function getMovie(request, response, next) {
-  let city = request.query.searchQuery;
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=${city}`;
+  let city = request.query.city;
+  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&page=1&query=${city}`;
   console.log('This is the movie url: ', url);
   try {
     let showMovie = await axios.get(url);
-    console.log(searchQuery);
+    // console.log(city);
     // Whenever you are declaring an await, you must always put in .data in the .map function presented down below and then .<name of the array inside of an object>
-    let dataToSend = showMovie.data.results.map(object => new Showtimes(object));
-    console.log(dataToSend);
+    let dataToSend = showMovie.data.results.map(movieObj => new Showtimes(movieObj));
+    
     response.status(200).send(dataToSend);
+    console.log('Movie: ', showMovie);
   }
   catch (error) {
     response.status(500).send('error: Sorry, something went wrong. ');

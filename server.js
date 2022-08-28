@@ -9,7 +9,7 @@ require('dotenv').config();
 const cors = require('cors');
 const axios = require('axios');
 const getWeather = require('./weather.js');
-const getMovie = require('./movies.js')
+const getMovie = require('./modules/movies.js')
 
 // Invoke the library,  so app will become our server.
 const app = express();

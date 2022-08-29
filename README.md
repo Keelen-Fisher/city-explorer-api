@@ -64,9 +64,9 @@ Estimate of time needed to complete: 5-6 hours
 
 Start time: 5:38 Pm CDT
 
-Finish time: CDT
+Finish time: 10:00 Pm CDT
 
-Actual time needed to complete: Not Yet completed
+Actual time needed to complete: 4 hours
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -80,6 +80,9 @@ Estimate of time needed to complete: 5-6 hours
 
 Start time: 5:38 Pm CDT
 
-Finish time: CDT
+Finish time: 12:00 PM CDT
 
-Actual time needed to complete: Not Yet completed
+Actual time needed to complete: 6 hours
+
+
+----------------------------------------------------------------------------------------------------------------------------

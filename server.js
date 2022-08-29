@@ -17,6 +17,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+
+// Invoke the library,  so app will become our server.
 const app = express();
 app.use(cors());
 let PORT = process.env.PORT || 3005;

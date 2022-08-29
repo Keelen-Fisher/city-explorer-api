@@ -1,11 +1,18 @@
 'use strict';
 
 const axios = require('axios');
+// Require: Global Object variable
+let cache = require('./cache.js');
 
 async function getMovie(request, response, next) {
   let city = request.query.searchQuery;
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=${city}`;
   console.log('This is the movie url: ', url);
+
+  // 
+
+
+
   try {
     let showMovie = await axios.get(url);
     console.log(searchQuery);

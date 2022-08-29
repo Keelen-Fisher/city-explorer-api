@@ -1,57 +1,51 @@
+// Don't forget to rename this file as "server.js"
+// setting cache equal to an object literal
+// Within the object of cache, need to have a custom key for each route and search results
+
+// Creating conditional statements
+// if..... then send the data 
+  // in your if, parmeters will contain your (cache[key]). implement your && with the value Date.now() - cache[key].timeStamp < 1000 * 60)){}
+  // Now you're going to do your respond.status(200).send(cache[key].data)
+
+// else......send the data from your previous labs. (Will be from your url, await axios and response.status(200).send(<variable>))
+
+// setting cache equal to an object literal
+// Within the object of cache, need to have a custom key for each route and search results
+
 'use strict';
 
-console.log('testing testing, is this thing on? or not?');
-
-// REQUIRES - 
-//  We use require instead of import 
-const express = require('express');
 require('dotenv').config();
+const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
-const getWeather = require('./weather.js');
-const getMovie = require('./movies.js')
-
-// Invoke the library,  so app will become our server.
 const app = express();
-
-// middleware to share resources across the internet: The most important job for middleware is to stop the request incase theres an error in the require.  
 app.use(cors());
 let PORT = process.env.PORT || 3005;
-app.listen(PORT, () => console.log(`We are up onn PORT: ${PORT}`));
+const getMovie = require('./module/movieCache.js')
 
-
-// ----------------------------------------------------------------------------Moved weather and movie async functions to seperate js files --------------------------------------------------------//
-
-// ROUTES 
-// Base route
-// Proof of Life
-//.get: One of the REST API, the rest contains watys to request informaton in the query. 
-// This wiil become the movie api.
+const getWeather = require('./module/weather.js');
 app.get('/', (request, response) => {
-  console.log('This works!');
-  response.status(200).send('Welcome to our server');
+  response.status(200).send('This server and API is active!');
 });
-
-// ---------------------------Weather-----------------------------------------//
 app.get('/weather', getWeather);
 
-
-// ---------------------------Movies--------------------------------------------//
 app.get('/movies', getMovie);
 
-// ----------------------- Creating Classes/ Moved to seperate files:-----------//
-
-
-// Catch all - needs to be at the bottom:
 app.get('*', (request, response) => {
-  console.log('This also works, but that is a bad thing!')
   response.status(404).send('This route does not exist');
 });
 
 
-// ERRORS
-// Handle any errors
-app.use((error, request, response) => {
-  response.status(500).send('error: Sorry, something went wrong. ');
-});
 
+// app.get('/weather', weatherHandler);
+
+// function weatherHandler(request, response) {
+  // const { lat, lon } = request.query;
+  // weather(lat, lon)
+  // .then(summaries => response.status(200).send(summaries))
+  // .catch((error) => {
+    // console.error(error);
+    // response.status(200).send('Sorry. Something went wrong!')
+  // });
+// }  
+
+app.listen(PORT, () => console.log(`Server up on ${PORT}`));

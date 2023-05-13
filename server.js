@@ -14,6 +14,10 @@
 
 'use strict';
 
+/* `require('dotenv').config()` loads environment variables from a .env file into process.env.
+`express` is a Node.js web application framework that allows us to create server-side applications.
+`cors` is a middleware that allows cross-origin resource sharing, which enables a web page to make
+requests to a different domain than the one that served the web page. */
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');

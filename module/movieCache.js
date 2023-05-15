@@ -1,36 +1,41 @@
 'use strict';
 
-let cache = require('./cache.js');
+'use strict';
+
 const axios = require('axios');
+let cache = require('./cache.js');
+
 
 async function getMovies(request, response, next) {
+
   let city = request.query.city;
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&page=1&query=${city}`;
+
   const key = 'movies-' + city;
 
-  try {
+  const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=${city}`;
 
-    if (cache[key] && (Date.now() - cache[key].timestamp < 20000)) {
-      console.log('Cache hits and scores!');
-      response.status(200).send(cache[key].data);
-    } else {
-      console.log('Cache swings and a miss! ');
-      cache[key] = {};
-      cache[key].timestamp = Date.now();
+  if (cache[key] && (Date.now() - cache[key].timestamp < 20000)) {
+    console.log('Movie Cache hit');
+  } else {
+    console.log('Movie Cache miss');
 
-      let showMovie = await axios.get(url);
-      let dataToSend = showMovie.data.results.map(movieObj => new Playing(movieObj));
+    cache[key] = {};
+    cache[key].timestamp = Date.now();
 
-      cache[key] = {
-        data: dataToSend,
-        timestamp: Date.now()
-      };
+    let result = await axios.get(movieURL);
+
+    try {
+      cache[key].data = result.data;
+      let cityData = cache[key].data;
+
+      let dataToSend = cityData.results.map(object => new Playing(object));
       response.status(200).send(dataToSend);
     }
-  }catch (error) {
-    response.status(500).send('error: Sorry, something went wrong. ');
-  }
 
+    catch (error) {
+      next(error);
+    }
+  }
 }
 
 class Playing {

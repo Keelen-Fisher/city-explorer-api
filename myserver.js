@@ -17,7 +17,6 @@ const app = express();
 // middleware to share resources across the internet: The most important job for middleware is to stop the request incase theres an error in the require.  
 app.use(cors());
 let PORT = process.env.PORT || 3005;
-app.listen(PORT, () => console.log(`We are up onn PORT: ${PORT}`));
 
 
 // ----------------------------------------------------------------------------Moved weather and movie async functions to seperate js files --------------------------------------------------------//
@@ -55,3 +54,5 @@ app.use((error, request, response) => {
   response.status(500).send('error: Sorry, something went wrong. ');
 });
 
+
+app.listen(PORT, () => console.log(`We are up onn PORT: ${PORT}`));

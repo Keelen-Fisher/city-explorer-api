@@ -25,7 +25,7 @@ class Forecast {
     this.date = weatherObj.valid_date;
     this.description = weatherObj.weather.description;
     this.lowTemp = weatherObj.low_temp;
-    this.highTemp = weatherObj.high_temp;
+    this.highTemp = weatherObj.max_temp;
     this.temp = weatherObj.temp;
   }
 }

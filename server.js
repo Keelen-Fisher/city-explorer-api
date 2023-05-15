@@ -4,8 +4,8 @@
 
 // Creating conditional statements
 // if..... then send the data 
-  // in your if, parmeters will contain your (cache[key]). implement your && with the value Date.now() - cache[key].timeStamp < 1000 * 60)){}
-  // Now you're going to do your respond.status(200).send(cache[key].data)
+// in your if, parmeters will contain your (cache[key]). implement your && with the value Date.now() - cache[key].timeStamp < 1000 * 60)){}
+// Now you're going to do your respond.status(200).send(cache[key].data)
 
 // else......send the data from your previous labs. (Will be from your url, await axios and response.status(200).send(<variable>))
 
@@ -45,13 +45,13 @@ app.get('*', (request, response) => {
 // app.get('/weather', weatherHandler);
 
 // function weatherHandler(request, response) {
-  // const { lat, lon } = request.query;
-  // weather(lat, lon)
-  // .then(summaries => response.status(200).send(summaries))
-  // .catch((error) => {
-    // console.error(error);
-    // response.status(200).send('Sorry. Something went wrong!')
-  // });
+// const { lat, lon } = request.query;
+// weather(lat, lon)
+// .then(summaries => response.status(200).send(summaries))
+// .catch((error) => {
+// console.error(error);
+// response.status(200).send('Sorry. Something went wrong!')
+// });
 // }  
 
 app.listen(PORT, () => console.log(`Server up on ${PORT}`));

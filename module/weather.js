@@ -11,7 +11,7 @@ async function getWeather(request, response, next) {
 
   try {
 
-    if (cache[key] && (Date.now() - cache[key].timestamp < 50000)) {
+    if (cache[key] && (Date.now() - cache[key].timestamp < 20000)) {
       console.log('Cache hits the weather and scores!');
       response.status(200).send(cache[key].data);
     } else {
@@ -19,15 +19,15 @@ async function getWeather(request, response, next) {
       cache[key] = {};
       cache[key].timestamp = Date.now();
 
-      let showResults = await axios.get(url);
-      let dataToSend = showResults.data.data.map(weatherObj => new Forecast(weatherObj));
+      let results = await axios.get(url);
+      let dataToSend = results.data.data.map(weatherObj => new Forecast(weatherObj));
       cache[key] = {
         data: dataToSend,
         timestamp: Date.now()
       };
       response.status(200).send(dataToSend);
     }
-  }catch (error) {
+  } catch (error) {
     response.status(500).send('error: Sorry, something went wrong. ');
   }
 

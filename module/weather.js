@@ -4,6 +4,11 @@ let cache = require('./cache.js');
 const axios = require('axios');
 
 async function getWeather(request, response, next) {
+/* These lines are extracting the latitude and longitude values from the query parameters of the
+incoming HTTP request. The `request` object contains information about the incoming request, and the
+`query` property of this object contains an object of key-value pairs of the query parameters. The
+`lat` and `lon` variables are being assigned the values of the `lat` and `lon` query parameters,
+respectively. */
   let lat = request.query.lat
   let lon = request.query.lon
   const key = 'weather-' + lat + lon;
